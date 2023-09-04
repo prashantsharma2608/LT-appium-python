@@ -10,14 +10,14 @@ pipeline {
       }
     }
 
-    stage(Download Tunnel){
+    stage(Download_Tunnel){
       steps{
         bat 'wget https://path-to-lt-binary/lambdatest-tunnel.zip'
         bat 'unzip lambdatest-tunnel.zip'
       }
     }
 
-    stage(Start tunnel){
+    stage(Start_tunnel){
       steps{
         bat './lambdatest-tunnel --user prashantsharma --key RlEUtZdSXJkl3iEtXNx6eWFSyLBfDJlkYRYG1igfb1OjpXfXRp'
       }
@@ -31,7 +31,7 @@ pipeline {
       }
     }
 
-    stage('kill tunnel'){
+    stage('kill_tunnel'){
       steps{
         bat './lambdatest-tunnel --user YOUR_USERNAME --key YOUR_ACCESS_KEY --kill'
       }
