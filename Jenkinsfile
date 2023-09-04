@@ -13,7 +13,7 @@ pipeline {
     stage(D){
       steps{
         bat 'curl https://downloads.lambdatest.com/tunnel/v3/windows/64bit/LT_Windows.zip'
-        powershell(script: 'Expand-Archive -C:\Users\prashantsharma\Downloads\LT_Windows.zip - C:\ProgramData\Jenkins\.jenkins\jobs\first. -Force')
+        bat '7z x lambdatest-tunnel.zip'
       }
     }
 
