@@ -12,7 +12,7 @@ pipeline {
 
     stage(D){
       steps{
-        bat 'wget https://path-to-lt-binary/lambdatest-tunnel.zip'
+        bat 'curl https://path-to-lt-binary/lambdatest-tunnel.zip'
         bat 'unzip lambdatest-tunnel.zip'
       }
     }
