@@ -10,6 +10,19 @@ pipeline {
       }
     }
 
+    stage(Download Tunnel){
+      steps{
+        bat 'wget https://path-to-lt-binary/lambdatest-tunnel.zip'
+        bat 'unzip lambdatest-tunnel.zip'
+      }
+    }
+
+    stage(Start tunnel){
+      steps{
+        bat './lambdatest-tunnel --user prashantsharma --key RlEUtZdSXJkl3iEtXNx6eWFSyLBfDJlkYRYG1igfb1OjpXfXRp'
+      }
+    }
+
     stage('Test') {
       steps {
         bat 'pip install -r requirements.txt'
@@ -17,6 +30,13 @@ pipeline {
         bat 'python android.py'
       }
     }
+
+    stage('kill tunnel'){
+      steps{
+        bat './lambdatest-tunnel --user YOUR_USERNAME --key YOUR_ACCESS_KEY --kill'
+      }
+    }
+    
     stage('Report'){
       steps{
         lambdaTestReportPublisher 'automation'
