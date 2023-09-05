@@ -13,7 +13,7 @@ pipeline {
     stage(D){
       steps{
         bat 'curl https://downloads.lambdatest.com/tunnel/v3/windows/64bit/LT_Windows.zip'
-        bat '7z x lambdatest-tunnel.zip'
+        bat 'unzip lambdatest-tunnel.zip'
       }
     }
 
