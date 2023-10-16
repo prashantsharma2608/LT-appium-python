@@ -10,30 +10,11 @@ pipeline {
       }
     }
 
-    stage(D){
-      steps{
-        bat 'curl https://downloads.lambdatest.com/tunnel/v3/windows/64bit/LT_Windows.zip'
-        bat 'unzip lambdatest-tunnel.zip'
-      }
-    }
-
-    stage(S){
-      steps{
-        bat './lambdatest-tunnel --user prashantsharma --key RlEUtZdSXJkl3iEtXNx6eWFSyLBfDJlkYRYG1igfb1OjpXfXRp'
-      }
-    }
-
     stage('Test') {
       steps {
         bat 'pip install -r requirements.txt'
         // bat 'python -m pip install pytest'
         bat 'python android.py'
-      }
-    }
-
-    stage('kill_tunnel'){
-      steps{
-        bat './lambdatest-tunnel --user YOUR_USERNAME --key YOUR_ACCESS_KEY --kill'
       }
     }
     
